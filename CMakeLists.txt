@@ -18,6 +18,8 @@ add_executable(${CMAKE_PROJECT_NAME}
 target_sources(${CMAKE_PROJECT_NAME}
 	PRIVATE
 		src/main.cpp
+		src/frame.cpp
+		src/frame.h
 )
 
 target_compile_options(${CMAKE_PROJECT_NAME}
