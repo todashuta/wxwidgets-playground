@@ -29,6 +29,8 @@ cmake_configure_args=(
 
 	#-DCMAKE_BUILD_TYPE=Debug
 	-DCMAKE_BUILD_TYPE=Release
+
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 )
 cmake "${cmake_configure_args[@]}"
 cmake --build "$build_dir" -j
