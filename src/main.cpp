@@ -1,17 +1,16 @@
-#include <wx/wx.h>
 #include "frame.h"
+#include <wx/wx.h>
 
-class MyApp : public wxApp
-{
+class MyApp : public wxApp {
 public:
-	bool OnInit() override;
+    bool OnInit() override;
 };
 
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit()
 {
-	MyFrame *frame = new MyFrame();
-	frame->Show(true);
-	return true;
+    MyFrame* frame = new MyFrame();
+    frame->Show(true);
+    return true;
 }
