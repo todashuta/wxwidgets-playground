@@ -37,10 +37,11 @@ void MyFrame::OnExit(wxCommandEvent& event)
 
 void MyFrame::OnAbout(wxCommandEvent& event)
 {
-    const wxString versionString = wxGetLibraryVersionInfo().GetVersionString();
-    wxMessageBox(
-        wxString::Format("This is a %s Hello World example", versionString),
-        "About Hello World ", wxOK | wxICON_INFORMATION);
+    wxString msg;
+    msg.Printf("This is a %s Hello World example",
+        wxGetLibraryVersionInfo().GetVersionString());
+    wxMessageBox(msg, "About Hello World",
+        wxOK | wxICON_INFORMATION);
 }
 
 void MyFrame::OnHello(wxCommandEvent& event)
