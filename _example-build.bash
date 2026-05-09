@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euxo pipefail
 
 if [[ "$(pwd)" != "$(cd "$(dirname "$0")" && pwd)" ]]; then
 	echo 'Please cd to project diectory beforehand.' 1>&2
@@ -8,7 +7,28 @@ fi
 
 build_dir=./build
 
-test -d $build_dir && rm -r $build_dir || true
+usage() {
+	echo "Usage: $0 [-c]"
+	echo "  -c    Remove $build_dir directory first"
+	echo "  -h    Show this help message"
+}
+
+clean_build_dir=
+while getopts "ch" opt; do
+	case ${opt} in
+		c) clean_build_dir=true ;;
+		h) usage; exit 0 ;;
+		*) usage; exit 1 ;;
+	esac
+done
+shift $((OPTIND - 1))
+[[ $# -gt 0 ]] && { usage; exit 1; }
+
+set -euxo pipefail
+
+if [ "$clean_build_dir" = true ]; then
+	test -d $build_dir && rm -r $build_dir || true
+fi
 
 export CLICOLOR_FORCE=1
 
